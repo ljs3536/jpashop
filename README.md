@@ -11,3 +11,6 @@ spring boot는 Tomcat을 내장하고 있고
 
 참고. spring-boot-devtools 라이브러리를 추가하면, html 파일을 컴파일만 해주면 서버 재시작 없이 View파일 변경이 가능하다.
 
+/23-12-22
+./gradlew build 오류 발생 
+해결 하기 위한 방법은?
