@@ -14,3 +14,7 @@ spring boot는 Tomcat을 내장하고 있고
 /23-12-22
 ./gradlew build 오류 발생 
 해결 하기 위한 방법은?
+
+/23-12-23 
+./gradlew build에서 오류가 난 원인은 PC에서 사용중인 JAVA_HOME의 jdk버전은 1.8이었지만 구성한 project의 java version은 17이었기 때문에
+JAVA_HOME 경로를 해당 17버전의 jdk로 변경해 주었다.
