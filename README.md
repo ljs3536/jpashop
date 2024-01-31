@@ -292,3 +292,18 @@ member가 주문을 하면 두 테이블에 값을 세팅해 주는게
 - 회원 리포지토리 개발
 - 회원 서비스 개발
 - 회원 기능 테스트
+
+# /24-01-31
+## 회원 서비스 개발
+
+### 참고 
+회원 가입기능 구현 부분에서 validateDuplicateMember를 만들어 중복 회원 검증을 할 수 있도록 구현 했지만 member의 이름으로만 검증을 하는경우 
+여러명이 동시에 같은 이름으로 등록을 하게되면 동시에 로직을 타면서 Exception이 발생하지 않을 수 있으므로, member의 name을 unique 제약조건으로 잡아주는걸 권장한다.
+
+### 참고
+memberRepository등 주입이 필요할 때 생성자 주입을 쓰는걸 권장한다. Spring 입문강의에서 들었던걸 기억하자! 기억이 안난다면 다시 복습하자!
+생성자가 한개만 있는 경우에는 @Autowired 애노테이션이 없어도 Spring이 인식하고 주입해준다.
+그리고 변경할 일이 없기 때문에 선언할 때 final을 붙여주자 ex) private final MemberRepository memberRepository
+final은 컴파일 시점에 값이 들어오는지 체크해 줄 수 있다.
+@AllArgsConstructor를 쓰면 생성자를 만들어주지 않아도 된다.
+@RequiredArgsConstructor를 쓰면 final이 있는 변수의 생성자를 세팅해준다. @PersistenceContext를 붙여서 생성해줬던 EntityManager에도 적용이 가능하다.
