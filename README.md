@@ -307,3 +307,21 @@ memberRepository등 주입이 필요할 때 생성자 주입을 쓰는걸 권장
 final은 컴파일 시점에 값이 들어오는지 체크해 줄 수 있다.
 @AllArgsConstructor를 쓰면 생성자를 만들어주지 않아도 된다.
 @RequiredArgsConstructor를 쓰면 final이 있는 변수의 생성자를 세팅해준다. @PersistenceContext를 붙여서 생성해줬던 EntityManager에도 적용이 가능하다.
+
+# /24-02-03
+## 회원 기능 테스트
+
+### 테스트 요구사항
+- 회원가입을 성공해야 한다.
+- 회원가입 할 때 같은 이름이 있으면 예외가 발생해야 한다.
+
+
+### 참고
+@Transactinal 애노테이션을 테스트에서 사용하면 기본적으로 Rollback을 해준다.
+EnitityManager가 persist를 한다고 해서 DB에 데이터가들어가는게 아니다. commit까지 처리를 해줘야 한다.
+테스트에서는 자동적으로 rollback을 하기 때문에 데이터가 들어간것을 확인하기 위해서는 @Rollback(value=false)설정을 추가해줘야한다.
+insert되는 문장을 확인해 보고 싶다면 EntityManager.flush()를 사용해주면 된다.
+
+### 참고
+spring에서 테스트를 할때 resource폴더를 만들고 application.yml을 만들면 main에 있는 application.yml보다 먼저 인식한다.
+그리고 테스트를 위해 메모리 db를 사용하기 위한방법도 있으며, 기본적으로 spirng에서는 아무런 설정을 하지 않아도 testdb를 사용하도록 제공한다.
