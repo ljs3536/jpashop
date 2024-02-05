@@ -1,4 +1,4 @@
-/23-12-21
+e/23-12-21
 spring.io -> projects -> spring boot -> learn -> reference.doc
 thymeleaf.org
 
@@ -325,3 +325,19 @@ insert되는 문장을 확인해 보고 싶다면 EntityManager.flush()를 사�
 ### 참고
 spring에서 테스트를 할때 resource폴더를 만들고 application.yml을 만들면 main에 있는 application.yml보다 먼저 인식한다.
 그리고 테스트를 위해 메모리 db를 사용하기 위한방법도 있으며, 기본적으로 spirng에서는 아무런 설정을 하지 않아도 testdb를 사용하도록 제공한다.
+
+# /24-02-04
+
+## 상품 도메인 개발
+
+### 구현 기능
+- 상품 등록
+- 상품 목록 조회
+- 상품 수정
+
+### 순서
+- 상품 엔티티 개발(비즈니스 로직 추가)
+- 상품 리포지토리 개발
+- 상품 서비스 개발
+- 상품 기능 테스트
+
