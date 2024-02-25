@@ -9,12 +9,40 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 // @Controller @ResponseBody => @RestController
 @RestController      // @ResponseBody는 데이터를 바로 xml or json 형태로 보내는데 쓰임
 @RequiredArgsConstructor
 public class MemberApiController {
 
     private final MemberService memberService;
+
+    @GetMapping("/api/v1/members")
+    public List<Member> membersV1(){
+        return memberService.findMembers();
+    }
+    @GetMapping("/api/v2/members")
+    public Result membersV2(){
+        List<MemberDto> collect = memberService.findMembers().stream()
+                .map(m -> new MemberDto(m.getName()))
+                .collect(Collectors.toList());
+
+        return new Result(collect.size(),collect);
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Result<T>{
+        private int count;
+        private T data;
+    }
+    @Data
+    @AllArgsConstructor
+    static class MemberDto{
+        private String name;
+    }
 
     @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid Member member){
