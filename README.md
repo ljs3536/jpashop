@@ -611,5 +611,13 @@ Order의 member가 fetch = Lazy설정이 되어있는데 이때 proxyMember를 �
 3. 그래도 안되면 DTO로 직접 조회하는 방법을 사용한다.
 4. 최후의 방법은 JPA가 제공하는 네이티브 SQL이나 스프링 JDBC Template를 사용해서 SQL을 직접 사용한다.
 
+# /24-03-03
+# API 개발 고급 - 컬렉션 조회 최적화
+주문 내역에서 추가로 주문한 상품 정보를 추가로 조회하자
+Order 기준으로 컬렉션인 OrderItem과 Item이 필요하다.
 
+앞의 예제에서는 toOne(OneToOne, ManyToOne)관계만 있었다.
+이번에는 컬렉션인 일다다 관계(OneToMany)를 조회하고, 최적화하는 방법을 알아보자.
+
+## 주문조회 V1: 엔티티 직접 노출 
 
