@@ -691,3 +691,10 @@ default_batch_fetch_size의 크기는 적당한 사이즈를 골라야 하는데
    - ToOne 관계는 조인해도 데이터 row수가 증가하지 않는다.
    - ToMany(1:N) 관계는 조인하면 row수가 증가한다.
 - row 수가 증가하지 않는 ToOne 관계는 조인으로 최적화 하기 쉬우므로 한번에 조회하고, ToMany 관계는 최적화 하기 어려우므로 findOrderItems() 같은 별도의 메서드로 조회한다.
+
+# /24-03-11
+## 주문조회 V5: JPA에서 DTO 직접 조회 - 컬렉션 조회 최적화
+- Query: 루트 1번, 컬렉션 1번
+- ToOne 관계들을 먼저 조회하고, 여기서 얻은 식별자 orderId로 ToMany 관계인 OrderItem을 한꺼번에 조회
+- MAP을 사용해서 매칭 성능 향상
+
